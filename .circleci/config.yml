@@ -12,7 +12,7 @@ workflows:
             - aws-cli/setup:
                 role_arn: arn:aws:iam::${AWS_ECR_REGISTRY_ID}
           context: aws-env
-          create-repo: true
+          create_repo: true
           dockerfile: Dockerfile
           path: ../docker/web/
           repo: circleci-ecr-app-demo
