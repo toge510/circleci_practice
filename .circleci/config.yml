@@ -15,9 +15,10 @@ jobs:
       - checkout
       - run:
         name: "ls-test"
-        command: "ls -al; ls -al /"
+        command: "ls -al"
 
 workflows:
   say-hello-workflow: 
     jobs:
       - say-hello
+      - ls-test
