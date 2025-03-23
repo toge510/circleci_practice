@@ -7,6 +7,9 @@ workflows:
   build_and_push_image:
     jobs:
       - aws-ecr/build_and_push_image:
+          auth:
+            - aws-cli/setup:
+                role_arn: arn:aws:iam::${AWS_ECR_REGISTRY_ID}:role/ci-cd-ecr 
           context: aws-env
           create-repo: true
           dockerfile: Dockerfile
