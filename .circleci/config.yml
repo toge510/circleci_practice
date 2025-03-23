@@ -10,7 +10,7 @@ workflows:
       - aws-ecr/build_and_push_image:
           auth:
             - aws-cli/setup:
-                role_arn: arn:aws:iam::${AWS_ECR_REGISTRY_ID}:user/ci-cd-ecr
+                profile_arn: ${AWS_ECR_REGISTRY_ID}
           context: aws-env
           create_repo: true
           dockerfile: Dockerfile
