@@ -1,8 +1,8 @@
 version: 2.1
 
 orbs:
-  aws-ecr: circleci/aws-ecr@9.4.0
   aws-cli: circleci/aws-cli@5.2.0
+  aws-ecr: circleci/aws-ecr@9.4.0
 
 workflows:
   build_and_push_image:
@@ -10,9 +10,8 @@ workflows:
       - aws-ecr/build_and_push_image:
           auth:
             - aws-cli/setup:
-                profile_arn: ${AWS_ECR_REGISTRY_ID}
-          context: aws-env
-          create_repo: true
+                role_arn: arn:aws:iam::${AWS_ACCOUNT_ID}:role/circleci-oidc-example-role
+          context: aws-dev
           dockerfile: Dockerfile
           path: ../docker/web/
           repo: circleci-ecr-app-demo
