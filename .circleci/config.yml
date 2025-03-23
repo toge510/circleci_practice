@@ -12,6 +12,7 @@ workflows:
             - aws-cli/setup:
                 role_arn: arn:aws:iam::${AWS_ACCOUNT_ID}:role/circleci-oidc-example-role
           context: aws-dev
+          create_repo: true
           dockerfile: Dockerfile
           path: ./docker/web/
           repo: circleci-ecr-app-demo
