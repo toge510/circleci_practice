@@ -1,12 +1,12 @@
 version: 2.1
 
 orbs:
-  aws-ecr: circleci/aws-ecr@9.1.0
+  aws-ecr: circleci/aws-ecr@9.4.0
 
 workflows:
   build_and_push_image:
     jobs:
-      - aws-ecr/build-and-push-image:
+      - aws-ecr/build_and_push_image:
           context: aws-dev
           create-repo: true
           dockerfile: Dockerfile
