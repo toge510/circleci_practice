@@ -1,40 +1,15 @@
 version: 2.1
+
 orbs:
-  python: circleci/python@2.0.3
-jobs:
-  say-hello:
-    docker:
-      - image: cimg/base:current
-    steps:
-      - checkout
-      - run:
-          name: "Say hello"
-          command: "echo Hello, World"
-  ls-test:
-    docker:
-      - image: cimg/base:current
-    steps:
-      - checkout
-      - run:
-          name: "ls-test"
-          command: "ls -al; pwd"
-  build_and_test: # this can be any name you choose
-    executor: python/default
-    steps:
-      - checkout
-      - python/install-packages:
-          pkg-manager: pip
-      - run:
-          name: Run tests
-          command: python -m pytest
-      - persist_to_workspace:
-          root: ~/project
-          paths:
-            - .
+  aws-ecr: circleci/aws-ecr@8.1.3
 
 workflows:
-  say-hello-workflow: 
+  build_and_push_image:
     jobs:
-      - say-hello
-      - ls-test
-      - build_and_test
+      - aws-ecr/build-and-push-image:
+          context: aws-dev
+          create-repo: true
+          dockerfile: Dockerfile
+          path: ../docker/web/
+          repo: circleci-ecr-app-demo
+          tag: "$CIRCLE_SHA1"
