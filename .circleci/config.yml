@@ -13,6 +13,6 @@ workflows:
                 role_arn: arn:aws:iam::${AWS_ACCOUNT_ID}:role/circleci-oidc-example-role
           context: aws-dev
           dockerfile: Dockerfile
-          path: ../docker/web/
+          path: ./docker/web/
           repo: circleci-ecr-app-demo
           tag: "$CIRCLE_SHA1"
