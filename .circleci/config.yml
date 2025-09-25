@@ -18,7 +18,10 @@ jobs:
           command: |
             pwd
             ls -la
-
+            cp -R Infrastructure ~/project/
+            cp -R Htdocs ~/project/
+            pwd
+            ls -la
 workflows:
   build_and_push_image:
     jobs:
