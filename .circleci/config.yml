@@ -12,6 +12,7 @@ jobs:
       - checkout
       - setup_remote_docker
       - run:
+          workking_directory: work
           name: Setup remote directory
           command: |
             pwd
