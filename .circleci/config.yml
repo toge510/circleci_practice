@@ -21,11 +21,13 @@ jobs:
             mkdir ~/project/work
             pwd
             ls -la
-            cp -R Infrastructure ~/project/work/
-            cp -R Htdocs ~/project/work/
+            cp -R Infrastructure/dev/apache/ ~/project/work/
+            cp -R Infrastructure/dev/www/ ~/project/work/
+            cp -R Htdocs/wwww/ ~/project/work/
             pwd
             ls -la
             ls -la ~/project/work
+            tree ~/project/work
 workflows:
   build_and_push_image:
     jobs:
