@@ -25,6 +25,7 @@ jobs:
             cp -R Htdocs ~/project/work/
             pwd
             ls -la
+            ls -la ~/project/work
 workflows:
   build_and_push_image:
     jobs:
