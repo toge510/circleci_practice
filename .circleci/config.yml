@@ -27,7 +27,6 @@ jobs:
             pwd
             ls -la
             ls -la ~/project/work
-            tree ~/project/work
 workflows:
   build_and_push_image:
     jobs:
