@@ -7,13 +7,20 @@ orbs:
 workflows:
   build_and_push_image:
     jobs:
-      - aws-ecr/build_and_push_image:
-          auth:
-            - aws-cli/setup:
-                role_arn: arn:aws:iam::${AWS_ACCOUNT_ID}:role/circleci-oidc-example-role
-          context: aws-dev
-          create_repo: true
-          dockerfile: Dockerfile
-          path: ./docker/web/
-          repo: circleci-ecr-app-demo
-          tag: "$CIRCLE_SHA1"
+      - setup_remote_docker
+      - checkout
+      - run
+          name: Setup remote directory
+          command: |
+            pwd
+            ls -la
+      # - aws-ecr/build_and_push_image:
+      #     auth:
+      #       - aws-cli/setup:
+      #           role_arn: arn:aws:iam::${AWS_ACCOUNT_ID}:role/circleci-oidc-example-role
+      #     context: aws-dev
+      #     create_repo: true
+      #     dockerfile: Dockerfile
+      #     path: ./docker/web/
+      #     repo: circleci-ecr-app-demo
+      #     tag: "$CIRCLE_SHA1"
