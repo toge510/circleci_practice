@@ -18,8 +18,11 @@ jobs:
           command: |
             pwd
             ls -la
-            cp -R Infrastructure ~/project/
-            cp -R Htdocs ~/project/
+            mkdir ~/project/work
+            pwd
+            ls -la
+            cp -R Infrastructure ~/project/work/
+            cp -R Htdocs ~/project/work/
             pwd
             ls -la
 workflows:
