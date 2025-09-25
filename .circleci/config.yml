@@ -23,7 +23,7 @@ jobs:
             ls -la
             cp -R Infrastructure/dev/apache/ ~/project/work/
             cp -R Infrastructure/dev/www/ ~/project/work/
-            cp -R Htdocs/wwww/ ~/project/work/
+            cp -R Htdocs/www/ ~/project/work/
             pwd
             ls -la
             ls -la ~/project/work
