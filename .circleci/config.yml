@@ -8,6 +8,7 @@ jobs:
   build:
     docker:
       - image: cimg/base:stable
+    workking_directory: ~/project
     steps:
       - checkout
       - setup_remote_docker
