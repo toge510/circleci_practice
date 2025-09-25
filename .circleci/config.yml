@@ -4,16 +4,23 @@ orbs:
   aws-cli: circleci/aws-cli@5.2.0
   aws-ecr: circleci/aws-ecr@9.4.0
 
-workflows:
-  build_and_push_image:
-    jobs:
-      - setup_remote_docker
+jobs:
+  build:
+    docker:
+      - image: cimg/base:stable
+    steps:
       - checkout
-      - run
+      - setup_remote_docker
+      - run:
           name: Setup remote directory
           command: |
             pwd
             ls -la
+
+workflows:
+  build_and_push_image:
+    jobs:
+      - build
       # - aws-ecr/build_and_push_image:
       #     auth:
       #       - aws-cli/setup:
